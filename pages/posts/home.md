@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 <Image
   src="/images/photo2.jpg"
   alt="Photo"
