@@ -1,0 +1,113 @@
+---
+title: 'Body parser middleware'
+subtitle: 'Prism with Next.js subtitle'
+date: '2022/01/11'
+description: 'My edition of body parser as Experssjs Middleware which tries to show mainly how to handle files uploading...'
+image: '/assets/images/middleware.jpg'
+tags:
+  - "middleware"
+  - "nodejs"
+github: "github"
+demo: "github"
+---
+These codes are used as expressjs middleware, which dedicate to handling `multipart` file uploading.
+```nodejs
+var path = require("path");
+var fs = require("fs");
+module.exports = function(type) {
+    function central(req, res, next) {
+        var ct = req.headers["content-type"]
+        if (ct.indexOf("multipart/form-data") != -1)
+            multipart(req, res, next)
+        else {
+            req.body = {}
+            var body = [];
+            req.on("data", function(data) {
+                body.push(data)
+            })
+            req.on("end", function() {
+                var str = Buffer.concat(body).toString();
+                var reg = /([^;&\s]+)=([^;&\s]+)/g
+                str.replace(reg, function(a, b, c) {
+                    req.body[b] = c
+                })
+                next()
+            })
+        }
+    }
+    function multipart(req, res, next) {
+        var boundary = "--" + /boundary=(.+)/g.exec(req.headers["content-type"])[1]
+        var bdlen = Buffer.byteLength(boundary)
+        var buf;
+        var cc;
+        req.body = { fields: [], files: [] };
+        function parseContent() {
+            var chi = buf.indexOf("\r\n\r\n")
+            if (chi != -1) {
+                var ch = buf.toString('utf8', 0, chi);
+                console.log("parseContent " + ch)
+                var reg = /\s\n([^:;]+):\s([^:;]+)/g
+                cc = {};
+                ch.replace(reg, function(a, b, c) {
+                    cc[b] = c
+                })
+                reg = /([^;\s]+)\=\"([^:;\s]+)\"/g
+                ch.replace(reg, function(a, b, c) {
+                    cc[b] = c
+                })
+                buf = buf.slice(chi + 4)
+                parseBuffer();
+            }
+            return chi
+        }
+        function setValue(e) {
+            if (cc.filename) {
+            	var end = e - 2 || buf.length - bdlen
+                req.pause();
+                var content = buf.slice(0, end)
+                var fullname = path.join(__dirname, cc.filename);
+                fs.appendFile(fullname, content, function(res) {
+                    req.resume()
+                })
+            	buf = buf.slice(e || end)
+                if (!e) return
+                cc.fullname = fullname
+                req.body.files.push(cc)
+            } else {
+                cc.value = buf.toString('utf8', 0, e -2) // minus /r/n
+                req.body.fields.push(cc)
+            	buf = buf.slice(e)
+            }
+            cc = null
+            parseBuffer();
+        }
+        function parseBuffer() {
+            if (buf.length < bdlen + 5 && buf.indexOf(boundary + "--") != -1)
+                return;
+            var index = buf.indexOf(boundary)
+            if (index == 0) {
+                parseContent();
+            } else {
+                setValue(index == -1 ? null : index)
+            }
+        }
+        req.on("data", function(data) {
+            buf ? buf = Buffer.concat([buf, data]) : buf = data;
+            parseBuffer()
+        })
+        req.on("end", function() {
+            next()
+        })
+    }
+    return central;
+```
+As middleware, My "multipart" can be invoked like:
+```nodejs
+const http = require('http');
+const express = require('express');
+const mfunc = require('./mymodule');
+const app = express()
+const multipart = mfunc()
+app.use(multipart)
+http.createServer(app).listen(80)
+```
