@@ -1,17 +1,18 @@
 ---
 title: 'Rewrite ExpressJs'
 subtitle: 'Prism with Next.js subtitle'
-date: '2020/07/11'
-description: 'This source code simulates the inner workings of **ExpressJS** in very concise code...'
+date: '2020/01/11'
+description: 'These codes simulate the inner workings of <u>ExpressJS</u> simply ...'
 image: '/assets/images/expressjs.png'
 tags:
   - "expressjs"
   - "web framework"
   - "nodejs"
+  - "asynchronous"
 github: "github"
 demo: "github"
 ---
-Expressjs is most popular nodejs application web framework. But for beginers, It's very hard to understand. My "expressjs" shows the core logic of Expressjs, with only 40 rows of codes telling how express to work.
+Expressjs is most popular nodejs application web framework. But for beginers, It's very hard to understand. My "expressjs" shows the core logic of Expressjs, with only 40 rows of codes explaining how express to work.
 ```nodejs
 //source codes
 var app = function(req, res, next) {
@@ -56,7 +57,7 @@ app.handle = function(req, res, next) {
 app.redirect = function(){}
 module.exports = app;
 ```
-As these codes are telling, Essentially, Expressjs is just used as the nodejs server's handler, which works like a pipeline of factory, with `use` function adding workshops to pipeline, and `route` function
+Essentially, Expressjs is just used as the nodejs server's handler, which works like a pipeline of factory, with `use` function adding workshops to pipeline, and `route` function. The following is a example that apply my "expressjs" to build a web server.
 ```nodejs
 const http = require('http');
 const app = require('./mycode')
@@ -71,4 +72,3 @@ app.route('/blogs',"GET",handler2)
 ...//at last step of pipeline, branch requests to different handlers
 http.createServer(app).listen(80)
 ```
-**Note**: *These codes is just for myself to study programming, not for open source.*

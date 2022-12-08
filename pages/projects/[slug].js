@@ -1,5 +1,6 @@
 import Header from "../../components/header"
 import Footer from "../../components/footer"
+import Note from "../../components/note"
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 import fs from 'fs'
@@ -7,6 +8,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { useRouter } from 'next/router'
+
 
 const Post = ({ frontMatter: {title,subtitle,description,image,tags,date,demo,github}, mdxSource ,slug}) => {
 
@@ -29,6 +31,7 @@ const Post = ({ frontMatter: {title,subtitle,description,image,tags,date,demo,gi
         </div>
         <article className="prose prose-xl">
           <MDXRemote {...mdxSource}/>
+          <Note />
         </article>
       </main>
       <Footer />

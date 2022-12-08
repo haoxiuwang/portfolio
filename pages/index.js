@@ -16,21 +16,23 @@ export default function Index({posts}) {
       <h1 className="font-bold text-center mb-20 text-5xl">Welcome to my Portfolio</h1>
       <div className="flex mb-40 items-end">
         <div className="mr-6">
-          <h2 className="text-3xl mb-4 font-bold tracking-wider">Leanne Graham</h2>
-          <p className="text-xl mb-4">Hi I'm Leanne, the way I study the most popular JavaScript frameworks is rewriting them by myself. Check out some of my projects for more info on them.</p>
+          <h2 className="text-3xl mb-4 font-bold tracking-wider">Fei Wang</h2>
+          <p className="text-xl mb-4">Hi I'm Fei, the way I study the most popular JavaScript frameworks is rewriting them by myself. Check out some of my projects for more info on them.</p>
         </div> <img className="mask mask-squircle h-48" src="https://media.graphassets.com/SddLnXkSSFGK2oMAYebQ" alt="Leanne Graham"/>
       </div>
       <div className="grid gap-10 md:grid-cols-4 md:px-10 lg:grid-cols-6 lg:-mx-52">
           {
             posts&&posts.map(({frontMatter,slug},i)=>{
-                const {title,image,description} = frontMatter
+                var {title,image,description,date} = frontMatter
+
               return (
                 <div key={i} className="relative group card shadow-2xl col-span-2">
                   <img src={image} alt="Tribute Page" className="object-cover h-full" />
                   <Link href={`/projects/${slug}`}>
                     <div className="absolute bottom-0 left-0 right-0 lg:opacity-0 group-hover:opacity-100 bg-primary p-4 duration-300 text-primary-content">
                       <h2 className="font-bold lg:text-xl">{title}</h2>
-                      <p className="text-sm lg:text-xl">{description}</p>
+          
+                      <p className="text-sm lg:text-xl" dangerouslySetInnerHTML={{__html:description}}></p>
                     </div>
                   </Link>
                 </div>
@@ -49,7 +51,7 @@ export const getStaticProps = async () => {
 
   files = files.filter((item,i)=>item.split(".")[1]=="mdx")
 
-  const posts = files.map(filename => {
+  var posts = files.map(filename => {
     const markdownWithMeta = fs.readFileSync(path.join("./pages",'projects', filename), 'utf-8')
     const {data:frontMatter} = matter(markdownWithMeta)
 
@@ -58,6 +60,7 @@ export const getStaticProps = async () => {
       slug: filename.split('.')[0]
     }
   })
+  posts.sort((a,b)=>new Date(a.frontMatter.date).getTime()-new Date(b.frontMatter.date).getTime())
 
   return {
     props: {

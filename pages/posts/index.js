@@ -24,7 +24,7 @@ export default function Posts({ posts }) {
                 </figure>
                 <div className="card-body prose space-y-4">
                   <h2 className="font-black text-[24px]">{title}</h2>
-                  <h2 className="font-black text-[24px]" id="ultra-hic-quondam-cephalus">{subtitle}</h2>
+                
                   <p className="" dangerouslySetInnerHTML={{__html:description}}>
 
                   </p>

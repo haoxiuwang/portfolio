@@ -49,7 +49,7 @@ export const getStaticProps = async () => {
 
   files = files.filter((item,i)=>item.split(".")[1]=="mdx")
 
-  const posts = files.map(filename => {
+  var posts = files.map(filename => {
     const markdownWithMeta = fs.readFileSync(path.join("./pages",'projects', filename), 'utf-8')
     const {data:frontMatter} = matter(markdownWithMeta)
 
@@ -58,6 +58,7 @@ export const getStaticProps = async () => {
       slug: filename.split('.')[0]
     }
   })
+  posts.sort((a,b)=>new Date(a.frontMatter.date).getTime()-new Date(b.frontMatter.date).getTime())
 
   return {
     props: {

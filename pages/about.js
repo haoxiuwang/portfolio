@@ -12,9 +12,9 @@ export default function About() {
     </h1>
     <div className="flex mb-40 items-end">
     <div className="mr-6">
-    <h2 className="text-3xl mb-4 font-bold tracking-wider">Leanne Graham
+    <h2 className="text-3xl mb-4 font-bold tracking-wider">Fei Wang
     </h2>
-    <p className="text-xl mb-4">Hi I'm Leanne, the way I study the most popular JavaScript frameworks is rewriting them by myself. Check out some of my projects for more info on them.
+    <p className="text-xl mb-4">Hi I'm Fei, the way I study the most popular JavaScript frameworks is rewriting them by myself. Check out some of my projects for more info on them.
     </p>
     </div>
 
@@ -23,7 +23,7 @@ export default function About() {
     <article div="" className="prose prose-lg">
     <h1 id="calaureae-erat-contemptor-debere-supplex-atlantiades-alemoniden">Thinking and doing like a outstanding person</h1>
 
-    <h2 id="aliquid-tmolo-pelle-arce">How I make a habit of rewriting the framework's codes by myself
+    <h2 id="aliquid-tmolo-pelle-arce">
     </h2>
 
     <p>Lorem markdownum Lyctia et enim voverat auxiliumque hic sibi quaecumque rupit
@@ -50,7 +50,8 @@ export default function About() {
 
     </blockquote>
 
-    <h2 id="huc-senectae-celmi-quaecumque-fecit-vestes">Huc senectae Celmi quaecumque fecit vestes
+    <h2 id="huc-senectae-celmi-quaecumque-fecit-vestes">
+    thinking of them as my role models
     </h2>
 
     <p>In iubet summique oculis prehendit fulmina proelia res caelo;
@@ -72,7 +73,7 @@ export default function About() {
           caede?
     </p>
 
-    <h2 id="et-nomina-occallescere-turbarat">Et nomina occallescere turbarat
+    <h2 id="et-nomina-occallescere-turbarat">hoping to create miracles with my codes.
     </h2>
 
     <p>Quo partus tegumenque adusque Ceres temploque harenis motura Peneidas frater
@@ -83,7 +84,7 @@ export default function About() {
     </strong> Talibus veri!
     </p>
 
-    <h2 id="milite-patitur-nullis-sacra">Milite patitur nullis sacra
+    <h2 id="milite-patitur-nullis-sacra">Much prefer to fail rather than to keep having a ordinary life
     </h2>
 
     <p>Votivi ictibus reddit deae labores optabile me longas magna cupit. Postquam erat

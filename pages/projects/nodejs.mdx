@@ -1,8 +1,8 @@
 ---
 title: 'Require Nodejs Module'
 subtitle: 'Prism with Next.js subtitle'
-date: '2022/12/1'
-description: 'My edition of body parser as Experssjs Middleware which tries to show mainly how to handle files uploading...'
+date: '2020/01/15'
+description: 'These codes is an implementation of <u>nodejs require function</u> ...'
 image: '/assets/images/nodejs.png'
 tags:
   - "module"
@@ -11,17 +11,24 @@ github: "github"
 demo: "github"
 ---
 
-For nodejs code, `require` function might be most mysterious, and mostly make beginer confused. What will happen when `require("express")` is excuted, my codes maybe too far simple, but can give the most important information writen in `require` function.
+For nodejs code, `require` function might be most mysterious, and mostly making beginer confused. What will happen when `require("express")` is excuted, my codes maybe too far simple, but can give the most important clues in `require` function.
 
 ```nodejs
-var path = require("path");
-var fs = require("fs");
+var path = require("path")
+var fs = require("fs")
 function frequire(file){
-    var result = fs.readFileSync(path.join(__dirname, file), 'utf-8');
+    var codes = fs.readFileSync(path.join(__dirname, file), 'utf-8')
     var mod = new Function("exports","module","require",
-    result + "var i;for(i in exports){break;}if(i == null){return module.exports;}else {return exports;}");
-    var obj = {mod};
-    return obj.mod({},{"exports":{}},frequire);
+    codes + `
+      var i;
+      for(i in exports){break;}
+      if(i == null)
+      return module.exports
+      else
+      return exports
+    `)
+    var obj = {mod}
+    return obj.mod({},{"exports":{}},frequire)
 }
-module.exports = frequire;
+module.exports = frequire
 ```
