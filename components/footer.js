@@ -1,12 +1,6 @@
 export default function Footer() {
   return(
     <footer className="p-10 footer bg-primary text-primary-content footer-center flex flex-col place-content-center place-items-center space-y-10">
-      <div className="flex space-x-4 place-content-center place-items-center w-full">
-        <a className="link link-hover" href="/projects">Portfolio</a>
-        <a className="link link-hover" href="/posts">Blog</a>
-        <a className="link link-hover" href="/about">About</a>
-      </div>
-
         <div className="flex place-items-center place-content-center space-x-4 ">
             <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current">
               <path

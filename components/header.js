@@ -3,7 +3,6 @@ import Head from 'next/head'
 import {useState,useEffect} from "react"
 export default function Header({title}) {
   var default_theme = "bumblebee"
-  const [menu,setMenu] = useState(false)
   const [theme,setTheme] = useState(null)
   var themes = [
     "Aqua",
@@ -38,17 +37,14 @@ export default function Header({title}) {
 
   useEffect(()=>{
     var _theme = localStorage.getItem("theme")
-
     if (_theme!=null) {
       console.log({_theme});
       setTheme(_theme)
       return
     }
     setTheme("bumblebee")
-
   },[])
 
-  console.log({menu});
   return (
     <div className="navbar mb-16 flex place-content-between place-items-center p-4 shadow-lg bg-neutral text-neutral-content sticky top-0 z-10">
       <Head>
@@ -66,7 +62,7 @@ export default function Header({title}) {
           <select onChange={(e)=>{
             e.preventDefault()
             setTheme(e.target.value)
-            setMenu(false)
+
             return false
           }} data-choose-theme="" className="pr-9 select select-bordered select-primary  bg-base-100 select-xs text-base-content">
             <option disabled="" value="Choose a theme">Choose a theme
@@ -115,7 +111,7 @@ export default function Header({title}) {
             </option>
           </select>
         </div>
-      </div>    
+      </div>
     </div>
   )
 }

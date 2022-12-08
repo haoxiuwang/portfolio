@@ -13,7 +13,7 @@ export default function Index({posts}) {
   <div>
     <Header title="Home"/>
     <main className="container max-w-3xl mx-auto px-4 mb-20">
-      <h1 className="font-bold text-center mb-20 text-5xl">Welcome to my Portfolio</h1>
+      <h1 className="font-bold text-center mb-20 text-5xl">Welcome to Fei's Portfolio</h1>
       <div className="flex mb-40 items-end">
         <div className="mr-6">
           <h2 className="text-3xl mb-4 font-bold tracking-wider">Fei Wang</h2>
@@ -31,7 +31,7 @@ export default function Index({posts}) {
                   <Link href={`/projects/${slug}`}>
                     <div className="absolute bottom-0 left-0 right-0 lg:opacity-0 group-hover:opacity-100 bg-primary p-4 duration-300 text-primary-content">
                       <h2 className="font-bold lg:text-xl">{title}</h2>
-          
+
                       <p className="text-sm lg:text-xl" dangerouslySetInnerHTML={{__html:description}}></p>
                     </div>
                   </Link>
