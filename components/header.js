@@ -3,7 +3,7 @@ import Head from 'next/head'
 import {useState,useEffect} from "react"
 export default function Header({title}) {
   var default_theme = "valentine"
-  const [theme,setTheme] = useState(null)
+  const [theme,setTheme] = useState(default_theme)
   var themes = [
     "Aqua",
     "Black",
