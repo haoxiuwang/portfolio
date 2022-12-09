@@ -2,7 +2,7 @@ import Link from "next/link"
 import Head from 'next/head'
 import {useState,useEffect} from "react"
 export default function Header({title}) {
-  var default_theme = "bumblebee"
+  var default_theme = "valentine"
   const [theme,setTheme] = useState(null)
   var themes = [
     "Aqua",
