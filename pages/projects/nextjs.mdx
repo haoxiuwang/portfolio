@@ -9,11 +9,138 @@ tags:
   - "reactjs"
   - "tailwind"
   - "nextjs"
-github: "github"
+github: "https://github.com/wangfei20/feiwang"
 demo: "github"
 ---
 
 
 # Using Prism with Next.js
 
-[**Fei's Portfolio**](https://prismjs.com/) is my personal Website which is deployed on Vercel, and developed by me with Nextjs.
+[**Fei's Portfolio**](https://portfolio.vercel.app) is my portfolio Website which is deployed on Vercel, and developed by me with Nextjs. depite its highly simple contents which only concludes my portfolio, but technically, it's complicated with the mixture of nextjs's dynamic Routes, Static Site Generation, mdx, multi-themes. Let's see the details.
+
+## Dynamic Routes
+
+In the index.js, the code fragments related to Dynamic Routes are like:
+
+```reactjs
+  <div key={i} className="relative group card shadow-2xl col-span-2">
+    <img src={image} alt="Tribute Page" className="object-cover h-full" />
+    <Link href={`/projects/${slug}`}>
+      <div className="absolute bottom-0 left-0 right-0 lg:opacity-0 group-hover:opacity-100 bg-primary p-4 duration-300 text-primary-content">
+        <h2 className="font-bold lg:text-xl">{title}</h2>
+
+        <p className="text-sm lg:text-xl" dangerouslySetInnerHTML={{__html:description}}></p>
+      </div>
+    </Link>
+  </div>
+```
+
+## Static Site Generation
+
+For example, the codes in index.js.
+
+```reactjs
+export const getStaticProps = async () => {
+
+  var files = fs.readdirSync(path.join("./","pages/projects"))
+
+  files = files.filter((item,i)=>item.split(".")[1]=="mdx")
+
+  var posts = files.map(filename => {
+    const markdownWithMeta = fs.readFileSync(path.join("./pages",'projects', filename), 'utf-8')
+    const {data:frontMatter} = matter(markdownWithMeta)
+
+    return {
+      frontMatter,
+      slug: filename.split('.')[0]
+    }
+  })
+  posts.sort((a,b)=>new Date(a.frontMatter.date).getTime()-new Date(b.frontMatter.date).getTime())
+
+  return {
+    props: {
+      posts
+    }
+  }
+}
+
+```
+
+## Mdx with nextjs
+
+Here, I used `next-mdx-remote`, `gray-matter`, `react-syntax-highlighter` to implement Mdx in this project.
+
+```reactjs
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote } from 'next-mdx-remote'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { useRouter } from 'next/router'
+
+```
+
+## Tailwind mult-themes
+
+Firstly, I have to custom every theme's styles in `globals.css`, such as:
+
+```css
+[data-theme=aqua] {
+  --p: 189 100% 62.9%;
+  --pf: 189 100% 52.9%;
+  --pc: 0 0% 0%;
+  --s: 274 30.9% 56.9%;
+  --sf: 274 30.8% 47.1%;
+  --sc: 0 0% 100%;
+  --a: 47 100% 80%;
+  --af: 47 100% 70%;
+  --ac: 0 0% 100%;
+  --n: 231 77.4% 32.9%;
+  --nf: 231 67.6% 29%;
+  --nc: 0 0% 100%;
+  --b1: 231 88.7% 38%;
+  --b2: 231 77.4% 32.9%;
+  --b3: 231 67.6% 29%;
+  --bc: 0 0% 100%;
+  --in: 207 89.8% 53.9%;
+  --su: 174 100% 29%;
+  --wa: 36 100% 50%;
+  --er: 14 100% 57.1%;
+  --border-color: var(--b3);
+  --rounded-box: 1rem;
+  --rounded-btn: .5rem;
+  --rounded-badge: 1.9rem;
+  --animation-btn: .25s;
+  --animation-input: .2s;
+  --btn-text-case: uppercase;
+  --btn-focus-scale: .95;
+  --navbar-padding: .5rem;
+  --border-btn: 1px;
+  --tab-border: 1px;
+  --tab-radius: .5rem;
+}
+
+```
+
+then config the classes in `tailwind.config.json` like this:
+
+```nodejs
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+       colors: {
+          neutral:"hsla(var(--n)/1)",
+          primary:"hsla(var(--p)/1)",
+          "neutral\-content":"hsla(var(--nc)/1)",
+          "primary\-content":"hsla(var(--pc)/1)",
+          "base\-content" :"hsla(var(--bc)/1)",
+          "base\-100":"hsla(var(--b1)/1)"
+       }
+   }
+}
+
+```

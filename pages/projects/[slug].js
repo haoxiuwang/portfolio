@@ -26,8 +26,8 @@ const Post = ({ frontMatter: {title,subtitle,description,image,tags,date,demo,gi
           </div>
         </div>
         <div className="mb-5 prose flex prose-a:text-primary hover:prose-a:text-primary-focus">
-          <a className="mr-5" href={demo}>Demo</a>
-          <a href={github}>Source Code</a>
+
+          <a href={github}><u>Click here to see the source code in github</u></a>
         </div>
         <article className="prose prose-xl">
           <MDXRemote {...mdxSource}/>

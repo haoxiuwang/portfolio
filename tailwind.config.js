@@ -11,8 +11,7 @@ module.exports = {
           "neutral\-content":"hsla(var(--nc)/1)",
           "primary\-content":"hsla(var(--pc)/1)",
           "base\-content" :"hsla(var(--bc)/1)",
-          "base\-100":"hsla(var(--b1)/1)"  
+          "base\-100":"hsla(var(--b1)/1)"
        }
-   },
-  plugins: [],
+   }
 }
