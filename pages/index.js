@@ -7,7 +7,7 @@ export default function Index() {
     <div className="bg-slate-400 fixed inset-0">
       <div>
         <F top="0px" left="0px" to={0} z="z-50">
-          <div className="select-none rounded bg-slate-100 flex place-content-center place-items-center space-x-5">
+          <div className="p-2 select-none rounded bg-slate-100 flex place-content-center place-items-center space-x-5">
             {
               data.map((item,i)=>(
                 <div onTouchEnd={()=>setId(i)} className="flex-nowrap rounded-full p-2 flex flex-col place-content-center place-items-center whitespace-nowrap" key={i}>
