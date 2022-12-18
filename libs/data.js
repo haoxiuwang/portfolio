@@ -28,6 +28,6 @@ var data = [
     id:"350539062",
     name:"三侠剑",
     cover:"sanxia.jpg"
-  },
+  }
 ]
 export default data

@@ -4,7 +4,7 @@ import F from "../components/f"
 export default function Index() {
   const [id,setId] = useState(0)
   return(
-    <div className="bg-slate-400">
+    <div className="bg-slate-400 fixed inset-0">
       <div>
         <F top="0px" left="0px" to={0} z="z-50">
           <div className="select-none rounded bg-slate-100 flex place-content-start place-items-center space-x-5">
