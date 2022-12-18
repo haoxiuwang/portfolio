@@ -23,11 +23,6 @@ var data = [
     id:"350331714",
     name:"隋唐演义",
     cover:"suitang.jpg"
-  },
-  {
-    id:"350671174",
-    name:"太平天国",
-    cover:"taiping.jpg"
   }
 ]
 export default data
