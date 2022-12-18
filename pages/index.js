@@ -6,7 +6,7 @@ export default function Index() {
   return(
     <div className="bg-slate-400">
       <div>
-        <F top="0px" left="0px" to={0}>
+        <F top="0px" left="0px" to={0} z="z-50">
           <div className="select-none rounded bg-slate-100 flex place-content-start place-items-center space-x-5">
             {
               data.map((item,i)=>(
@@ -17,7 +17,7 @@ export default function Index() {
             }
         </div>
         </F>
-        <F top="200px" to={1} z="z-40">
+        <F top="200px" to={1} z="z-10">
           <div className=" p-[50px] flex place-content-center">
             <iframe id="iframe" frameBorder="no" border="0" marginWidth="0" marginHeight="0" width={330} height={14450} src={`https://music.163.com/outchain/player?type=4&id=${data[id].id}&auto=1&height=430&order=2`}></iframe>
           </div>
