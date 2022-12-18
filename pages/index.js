@@ -7,10 +7,10 @@ export default function Index() {
     <div className="bg-slate-400 fixed inset-0">
       <div>
         <F top="0px" left="0px" to={0} z="z-50">
-          <div className="select-none rounded bg-slate-100 flex place-content-start place-items-center space-x-5">
+          <div className="select-none rounded bg-slate-100 flex place-content-center place-items-center space-x-5">
             {
               data.map((item,i)=>(
-                <div onClick={()=>setId(i)} className="flex-nowrap rounded-full p-2 flex flex-col place-content-start place-items-center whitespace-nowrap space-x-5" key={i}>
+                <div onClick={()=>setId(i)} className="flex-nowrap rounded-full p-2 flex flex-col place-content-center place-items-center whitespace-nowrap" key={i}>
                     <img width="150px" src={`/assets/images/${item.cover}`}/>
                     <span>{item.name}</span>
                 </div>))
