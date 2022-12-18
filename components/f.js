@@ -29,7 +29,7 @@ export default function F({top,left,children,to,z}) {
 
   },[])
   return(
-      <div ref={p} className="inset-0">
+      <div ref={p} className="inset-0 ${z?z:"z-50"}">
         <div style={{top,left}} className={`fixed ${z?z:"z-50"} margin-[150px]`} ref={ch} >
         {children}
         </div>
