@@ -14,17 +14,22 @@ export default function F({top,left,children,to,z}) {
       e.targetTouches[0].clientX-ch.c.cx+"px"
       if(to>0)ch.current.style.top = e.targetTouches[0].clientY-ch.c.cy+"px"
       if(to!=1)ch.current.style.left = e.targetTouches[0].clientX-ch.c.cx+"px"
+      return false
     }
     p.current.addEventListener("touchstart",function (e) {
+      e.preventDefault()
       var cx = e.targetTouches[0].clientX-ch.current.offsetLeft
       var cy = e.targetTouches[0].clientY-ch.current.offsetTop
       ch.c = {cx,cy}
       p.current.style.position = "fixed"
       p.current.addEventListener("touchmove",handler,{passive:false})
+      return false
     })
     p.current.addEventListener("touchend",function (e) {
+      e.preventDefault()
       p.current.style.position = "static"
       p.current.removeEventListener("touchmove",handler,{passive:false})
+      return false
     })
 
   },[])
