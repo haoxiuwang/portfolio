@@ -16,7 +16,7 @@ export default function Index() {
   }
   var _html = `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="14500" src="//music.163.com/outchain/player?type=4&amp;id=${data[id].id}&amp;auto=1&amp;height=430&amp;bg=e8e8e8"></iframe>`
   return(
-    <div className=" fixed inset-0">
+    <div className="fixed inset-0">
 
         <F top="0px" left="0px" to={0} z="z-50">
           <div className="p-2 select-none rounded bg-slate-100 flex place-content-center place-items-center space-x-5">
@@ -34,7 +34,7 @@ export default function Index() {
             <div className="bg-rose-200 mx-2 mt-[10vh] h-[300px]">
               {arr.map((item,i)=>(
                 <div onClick={()=>{
-                    player.current.style.marginTop = -1*(_g-item)*300+"px"
+                    player.current.style.marginTop = -1*(_g-item)*300+20+"px"
                     setIndex(i)
                   }
               } style={{height:300/_g+"px"}} className={`${i<index?"bg-rose-400":""}`} key={i}></div>))}
