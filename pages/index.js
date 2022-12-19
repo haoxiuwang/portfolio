@@ -5,6 +5,9 @@ export default function Index() {
   //  <iframe id="iframe" frameBorder="no" border="0" marginWidth="0" marginHeight="0" width={330} height={14450} src={`https://music.163.com/outchain/player?type=4&id=${data[id].id}&auto=1&height=430&order=4`}></iframe>
 
   const [id,setId] = useState(0)
+
+
+  var _html = `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=4&amp;id=${data[id].id}&amp;auto=1&amp;height=430&amp;bg=e8e8e8"></iframe>`
   return(
     <div className="bg-slate-400 fixed inset-0">
       <div>
@@ -20,8 +23,7 @@ export default function Index() {
         </div>
         </F>
         <F top="200px" to={1} z="z-10">
-          <div className=" p-[50px] flex place-content-center">
-            <iframe className="w-full" id="iframe" frameBorder="no" border="0" marginWidth="0" marginHeight="0" width={330} height={400} src={`https://music.163.com/#/djradio?id=${data[id].id}&order=2&_hash=programlist&limit=500`}></iframe>
+          <div dangerouslySetInnerHTML = {{__html:_html}} className=" p-[50px] flex place-content-center">
 
           </div>
         </F>
