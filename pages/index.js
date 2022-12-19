@@ -21,7 +21,7 @@ export default function Index() {
         </F>
         <F top="200px" to={1} z="z-10">
           <div className=" p-[50px] flex place-content-center">
-            <iframe className="w-full" id="iframe" frameBorder="no" border="0" marginWidth="0" marginHeight="0" width={330} height={400} src={`https://music.163.com/#/djradio?id=${data[id].id}&order=2&_hash=programlist`}></iframe>
+            <iframe className="w-full" id="iframe" frameBorder="no" border="0" marginWidth="0" marginHeight="0" width={330} height={400} src={`https://music.163.com/#/djradio?id=${data[id].id}&order=2&_hash=programlist&limit=500`}></iframe>
 
           </div>
         </F>
