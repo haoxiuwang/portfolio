@@ -7,7 +7,7 @@ export default function Index() {
   const [id,setId] = useState(0)
 
 
-  var _html = `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="4500" src="//music.163.com/outchain/player?type=4&amp;id=${data[id].id}&amp;auto=1&amp;height=430&amp;bg=e8e8e8"></iframe>`
+  var _html = `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="14500" src="//music.163.com/outchain/player?type=4&amp;id=${data[id].id}&amp;auto=1&amp;height=430&amp;bg=e8e8e8"></iframe>`
   return(
     <div className="bg-slate-400 fixed inset-0">
       <div>
