@@ -22,7 +22,7 @@ export default function Index() {
             }
         </div>
         </F>
-        <F z="z-10" top="200px" left="50px" to={1}>
+        <F z="z-10" top="200px" left="15px" to={1}>
           <div dangerouslySetInnerHTML = {{__html:_html}} className=" p-[50px] flex place-content-center">
 
           </div>
