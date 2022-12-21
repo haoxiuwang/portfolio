@@ -29,7 +29,7 @@ export default function Index() {
       </div>
         <div className="ml-2 mt-[150px] grid grid-cols-[20px_1fr] gap-2">
 
-            <div className="bg-rose-200 mx-2 mt-[10vh] h-[300px]">
+            <div className="bg-rose-200 mx-2 mt-5 h-[300px]">
               {arr.map((item,i)=>(
                 <div onClick={()=>{
                     player.current.style.marginTop = -1*(_g-item)*300+20+"px"
