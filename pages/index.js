@@ -27,7 +27,7 @@ export default function Index() {
           </div>))
       }
       </div>
-        <div className="ml-2 mt-[150px] grid grid-cols-[20px_1fr] gap-2">
+        <div className="ml-2 mt-5 grid grid-cols-[20px_1fr] gap-2">
 
             <div className="bg-rose-200 mx-2 mt-5 h-[300px]">
               {arr.map((item,i)=>(
