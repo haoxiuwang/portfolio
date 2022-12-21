@@ -18,7 +18,7 @@ export default function Index() {
   return(
     <div className="fixed inset-0">
 
-    <div className="overflow-x-scroll p-2 select-none rounded bg-slate-100 flex place-content-center place-items-center space-x-5">
+    <div className="overflow-x-scroll z-50 p-2 select-none rounded bg-slate-100 flex place-content-center place-items-center space-x-5">
       {
         data.map((item,i)=>(
           <div onClick={()=>setId(i)} className={`${id==i?"bg-slate-400":""} flex-nowrap p-2 flex flex-col place-content-center place-items-center whitespace-nowrap`} key={i}>
@@ -27,7 +27,7 @@ export default function Index() {
           </div>))
       }
       </div>
-        <div className="ml-2 mt-5 grid grid-cols-[20px_1fr] gap-2">
+        <div className="ml-2 z-40 mt-5 grid grid-cols-[20px_1fr] gap-2">
 
             <div className="bg-rose-200 mx-2 mt-5 h-[300px]">
               {arr.map((item,i)=>(
