@@ -18,10 +18,10 @@ export default function Index() {
   return(
     <div className="fixed inset-0">
 
-    <div className="p-2 select-none rounded bg-slate-100 flex place-content-center place-items-center space-x-5">
+    <div className="overflow-x-scroll p-2 select-none rounded bg-slate-100 flex place-content-center place-items-center space-x-5">
       {
         data.map((item,i)=>(
-          <div onTouchEnd={()=>setId(i)} className={`${id==i?"bg-slate-400":""} flex-nowrap p-2 flex flex-col place-content-center place-items-center whitespace-nowrap`} key={i}>
+          <div onClick={()=>setId(i)} className={`${id==i?"bg-slate-400":""} flex-nowrap p-2 flex flex-col place-content-center place-items-center whitespace-nowrap`} key={i}>
               <img width="150px" src={`/assets/images/${item.cover}`}/>
               <span>{item.name}</span>
           </div>))
